@@ -1,0 +1,40 @@
+a {
+  text-decoration: underline;
+}
+a strong {
+  color: var(--geist-success);
+}
+a.reference {
+  color: var(--accents-3);
+  text-decoration: none;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+ol {
+  list-style: number;
+  padding-left: 20px;
+}
+
+.split-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bottom {
+  position: absolute;
+  width: 90%;
+  bottom: 2rem;
+}
+
+blockquote {
+  color: #7f8fa4;
+  border-left: 3px solid #eaeaea;
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
