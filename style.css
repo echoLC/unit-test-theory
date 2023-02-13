@@ -39,6 +39,14 @@ blockquote {
   font-weight: bold;
 }
 
+th,td {
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
 .layout-three-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
