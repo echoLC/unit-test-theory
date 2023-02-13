@@ -16,26 +16,26 @@ colorSchema: 'light'
 ---
 
 # 背景
+
 常见的疑问：
 
--  📝 **怎么去评判一个单元测试的用例是否有效可靠？**
--  🧑‍💻 写单元测试到底有什么意义？
--  🛠 单元测试定位是什么？
+- 📝 **怎么去评判一个单元测试的用例是否有效可靠？**
+- 🧑‍💻 写单元测试到底有什么意义？
+- 🛠 单元测试定位是什么？
 
 ---
-
 
 # 内容大纲
 
 分享内容：
 
-  - **定义**
-  - **意义**
-  - **适用场景**
-  - **拆分工作单元**
-  - **优秀单测的原则**
-  - **集成测试**
-  - **测试驱动开发（Test-Driven Development）**
+- **定义**
+- **意义**
+- **适用场景**
+- **拆分工作单元**
+- **优秀单测的原则**
+- **集成测试**
+- **测试驱动开发（Test-Driven Development）**
 
 ---
 
@@ -55,6 +55,7 @@ const sum from './sum'
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
 });
+
 ```
 
 ---
@@ -64,7 +65,6 @@ test('adds 1 + 2 to equal 3', () => {
 <Note>测试越多越好是一个伪命题，无效的测试不如没有测试。</Note>
 
 单测的意义：
-
 
 - **保证模块的旧功能**
 
@@ -128,9 +128,10 @@ layout: center
 
 - **more...**
 
---- 
+---
 
 # 不易测的特点
+
 - **投入成本过高，收益不大**
 
 - **强依赖外部模块，难以 mock**
@@ -138,6 +139,7 @@ layout: center
 ---
 layout: full
 ---
+
 # 单元划分
 
 - **util**
@@ -152,61 +154,81 @@ layout: full
 
 # 优秀单测的原则
 
-<div v-click="1">
+<div class="layout-three-col">
+  <div class="item" v-click="1">
+  <mdi-auto-fix class="item-icon"></mdi-auto-fix>
+  <p class="item-title">自动的（Automatic）</p>
+  所有的测试用例应该能够自动运行，不需要通过交互地进行。
+  </div>
 
-- **自动的（Automatic）**
-所有的测试用例应该能够自动运行，不需要通过交互地进行。
+  <div class="item" v-click="2">
+  <mdi-repeat-variant class="item-icon"></mdi-repeat-variant>
+  <p class="item-title">可重复执行的（Repeatable）</p>
+  测试用例可以在任意时间重复执行，每次测试的结果都是稳定的。
+  </div>
+
+  <div class="item" v-click="3">
+  <mdi-atom  class="item-icon"></mdi-atom>
+  <p class="item-title">独立的（Independent）</p>
+  测试用例之间没有任何依赖关系，调换用例的顺序，不影响测试结果。
+  </div>
+
 </div>
 
-<div v-click="2">
-
-- **可重复执行的（Repeatable）**
-测试用例可以在 CI 中或者任意时间重复执行，在代码没有变动的情况下，每次测试的结果都是稳定的。
-</div>
-
-<div v-click="3">
-
-- **独立的（Independent）**
-各个测试用例之间应该没有任何依赖关系，测试用例之间随意调换执行顺序，始终不影响测试结果。
-</div>
+---
+layout: center
 ---
 
-<div>
-
-- **快速的（Fast）**
-单元测试运行速度是快速的，就算是大型项目，运行的时间应该是分钟级别。
+<div class="layout-three-col">
+<div class="item">
+<mdi-rocket-launch class="item-icon"></mdi-rocket-launch>
+<p class="item-title">快速的（Fast）</p>
+单测运行速度是快速的，就算是大型项目，运行的时间应该是分钟级别。
 </div>
 
-<div v-click="1">
-
-- **可自我验证的（Self Validating）**
-单元测试应该是可以通过简单的命令做到自执行，不需要人工验证。
+<div class="item" v-click="1">
+<mdi-check-circle class="item-icon"></mdi-check-circle>
+<p class="item-title">自我验证的（Self Validating）</p>
+单元测试可以通过简单的命令做到自执行并验证结果，不需要人工验证。
 </div>
 
-<div v-click="2">
-
-- **及时的（Timely）**
-在新增了 feature 和修复了问题后，测试用例应该及时更新。对于无效的测试，应该及时清理。测试代码应该看做源码的一部分，也需要及时重构和更新。
+<div class="item" v-click="2">
+<mdi-timer-sand-complete class="item-icon"></mdi-timer-sand-complete>
+<p class="item-title">及时的（Timely）</p>
+测试用例应该及时更新，对于无效的测试，应该及时清理。
 </div>
+
+</div>
+
+---
+layout: center
 ---
 
-<div>
-
-- **隔离的（Isolated）**
-测试用例之间应该做到互相不干扰，全局状态的修改或者 DOM 树的调整，如有必要，需要做一些状态重置。
+<div class="layout-three-col">
+<div class="item">
+<mdi-package class="item-icon"></mdi-package>
+<p class="item-title">隔离的（Isolated）</p>
+测试用例之间应该互相不干扰，如有必要，需要做一些全局状态的重置。
 </div>
 
-<div v-click="1">
+<div v-click="1" class="item">
+<mdi-text-box-search-outline class="item-icon"></mdi-text-box-search-outline>
 
-- **可读的（Readable）**
-好的测试用例应该是可读的，测试用例的描述应该做到简明扼要。单个用例代码应该避免出现大量的代码和逻辑，例如出现 if、for等语句。
+<p class="item-title">可读的（Readable）</p>
+
+  测试用例应该是可读的，用例的描述简明扼要，测试代码避免出现 `if`、`for` 等语句。
 
 </div>
 
-<div v-click="2">
+<div v-click="2" class="item">
+<mdi-wrench-outline class="item-icon"></mdi-wrench-outline>
 
-- **易维护的（Maintainable）**
-测试代码也是代码，所以可维护性也很重要。**将一些通用的测试初始化逻辑，通过函数进行封装**，一定程度上提高测试代码的可维护性。
+<p class="item-title">易维护的（Maintainable）</p>
+
+可维护性对于测试代码也很重要，<strong>将一些通用的测试逻辑，通过函数进行封装</strong>，提高测试代码的可维护性。
+
+</div>
+
 </div>
 
 ---
@@ -219,7 +241,7 @@ layout: split
 </div>
 
 ```ts
-test('撤销', done => {
+test('撤销', (done) => {
   let count = 0
   const editor = createEditor(document, 'div1', '', {
     onchange: function () {
@@ -240,51 +262,60 @@ test('撤销', done => {
     },
     compatibleMode: function () {
       return Math.round(Math.random()) == 1
-    },
+    }
   })
   mockCmdFn(document)
   editor.cmd.do('insertHTML', '<span>123</span>')
 })
 ```
+
 ---
 layout: split
 ---
-# 不好的用例
-```js
-it("sync cacheData", () => {
-  const mockFn = (value: any) => value;
-  const mockCacheData = cacheable(mockFn);
-  // * 同步测试 -----------------------
-  // * 首次缓存
-  expect(mockCacheData(1)).toBe(1);
-  // * 相同参数缓存
-  expect(mockCacheData(1)).toBe(1);
-  // * 不同参数类型刷新缓存
-  expect(mockCacheData("1")).toBe("1");
-  // * 新参数为函数类型刷新缓存
-  const mockFn1 = () => {};
-  const mockFn2 = () => {};
-  expect(mockCacheData(mockFn1)).toBe(mockFn1);
-  expect(mockCacheData(mockFn2)).toBe(mockFn2);
-  // * 新参数为数组类型刷新缓存
-  const mockArr1 = [1, 2];
-  const mockArr2 = [1, 2, 3];
-  const mockArr3 = [1, 2, 4];
-  expect(mockCacheData(mockArr1)).toBe(mockArr1);
-  expect(mockCacheData(mockArr2)).toBe(mockArr2);
-  expect(mockCacheData(mockArr3)).toBe(mockArr3);
-  // * null刷新缓存
-  // 省略一些代码
-});
-```
 
----
+<div>
+
+# 不好的用例
+
+<div class="bottom" v-click>
 
 ## 问题
 
 - **关注点太多**
 
 - **可读性差**
+
+</div>
+
+</div>
+
+```js
+it('sync cacheData', () => {
+  const mockFn = (value: any) => value
+  const mockCacheData = cacheable(mockFn)
+  // * 同步测试 -----------------------
+  // * 首次缓存
+  expect(mockCacheData(1)).toBe(1)
+  // * 相同参数缓存
+  expect(mockCacheData(1)).toBe(1)
+  // * 不同参数类型刷新缓存
+  expect(mockCacheData('1')).toBe('1')
+  // * 新参数为函数类型刷新缓存
+  const mockFn1 = () => {}
+  const mockFn2 = () => {}
+  expect(mockCacheData(mockFn1)).toBe(mockFn1)
+  expect(mockCacheData(mockFn2)).toBe(mockFn2)
+  // * 新参数为数组类型刷新缓存
+  const mockArr1 = [1, 2]
+  const mockArr2 = [1, 2, 3]
+  const mockArr3 = [1, 2, 4]
+  expect(mockCacheData(mockArr1)).toBe(mockArr1)
+  expect(mockCacheData(mockArr2)).toBe(mockArr2)
+  expect(mockCacheData(mockArr3)).toBe(mockArr3)
+  // * null刷新缓存
+  // 省略一些代码
+})
+```
 
 ---
 
@@ -301,7 +332,8 @@ test('LogAnalyzer isValid valid fileName', () => {
   expect(res).toBeTruthy()
 })
 ```
----
+
+<div v-click>
 
 ## 问题
 
@@ -309,29 +341,35 @@ test('LogAnalyzer isValid valid fileName', () => {
 
 - **可维护性差**
 
+</div>
+
 ---
 
 ```js
-describe("observable", () => {
-  it("", () => {
-    const mockObserveList = observe();
-    const mockFn1 = (a: number) => {};
-    const mockFn2 = (a: number) => {};
-    mockObserveList.subscribe(mockFn1);
-    mockObserveList.subscribe(mockFn2);
-    mockObserveList.next(2);
-    mockObserveList.subscribe(mockFn2).unsubscribe();
+describe('observable', () => {
+  it('', () => {
+    const mockObserveList = observe()
+    const mockFn1 = (a: number) => {}
+    const mockFn2 = (a: number) => {}
+    mockObserveList.subscribe(mockFn1)
+    mockObserveList.subscribe(mockFn2)
+    mockObserveList.next(2)
+    mockObserveList.subscribe(mockFn2).unsubscribe()
     // ???
-  });
-});
+  })
+})
 ```
----
+
+<div v-click>
 
 ## 问题
 
 - **缺少断言**
 
 - **可读性差**
+
+
+</div>
 
 ---
 layout: split
@@ -346,7 +384,6 @@ layout: split
 </div>
 
 </div>
-
 
 ```ts
 describe('convert to html or text', () => {
@@ -377,6 +414,7 @@ describe('convert to html or text', () => {
     expect(editor.getHtml()).toBe('<div>hello</div>')
   })
 ```
+
 ---
 
 ```ts
@@ -396,12 +434,12 @@ describe('Upload image menu', () => {
   test('UploadImageMenu isActive always return false', () => {
     expect(menu.isActive(editor)).toBe(false)
   })
-}) 
+})
 ```
 
 <div class="advantage" v-click>
 
-  **优点：隔离测试对象，保证用例的独立性**
+**优点：隔离测试对象，保证用例的独立性**
 
 </div>
 
@@ -414,14 +452,14 @@ describe('Upload image menu', () => {
 ---
 
 ```ts
-function createLogan () {
-	const logan = new LogAnalyzer()
+function createLogan() {
+  const logan = new LogAnalyzer()
   // logan.init()
   return logan
-}	
+}
 
 test('LogAnalyzer isValid invalid fileName', () => {
-	const logan = createLogan()
+  const logan = createLogan()
   const res = logan.isValid('12345')
   expect(res).toBeFalsy()
 })
@@ -429,8 +467,8 @@ test('LogAnalyzer isValid invalid fileName', () => {
 
 <div class="advantage" v-click>
 
-  **优点：封装重复逻辑，提高测试的可维护性**
-  
+**优点：封装重复逻辑，提高测试的可维护性**
+
 </div>
 
 <style>
@@ -441,8 +479,8 @@ test('LogAnalyzer isValid invalid fileName', () => {
 
 ---
 
-
 # 集成测试
+
 任何代码测试，如果它运行速度不快，结果不稳定，或者依赖被测试单元的一个或者多个依赖物（可能是一个服务，也可能是一个模块），这样的测试，一般称之为**集成测试**。
 
 ---
@@ -462,6 +500,7 @@ layout: split
 ---
 layout: split
 ---
+
 # TDD
 
 <img src="/images/tdd.png" style="max-width: 85%;" />
