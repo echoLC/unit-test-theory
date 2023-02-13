@@ -208,7 +208,7 @@ layout: center
 <div class="item">
 <mdi-package class="item-icon"></mdi-package>
 <p class="item-title">隔离的（Isolated）</p>
-测试用例之间应该互相不干扰，如有必要，需要做一些全局状态的重置。
+单元测试不应该有任何外部依赖，例如数据库、三方服务。
 </div>
 
 <div v-click="1" class="item">
